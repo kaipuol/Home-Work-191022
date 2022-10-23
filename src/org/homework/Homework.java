@@ -1,7 +1,6 @@
 package org.homework;
 
 import java.util.Scanner;
-
 public class Homework {
     public static void main(String[] args) {
         int correctCount = 0, wrongCount = 0;
