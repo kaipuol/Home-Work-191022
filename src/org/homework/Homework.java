@@ -34,10 +34,15 @@ public class Homework {
             for(int j = 0; j < answerOptions[i].length; j++) {
                 System.out.println(answerOptions[i][j]);
             }
-            System.out.print("Ваш ответ: ");
             //TODO: Считываем с консоли ответ пользователя
+            System.out.print("Ваш ответ: ");
             Scanner answer = new Scanner(System.in);
             int k = answer.nextInt();
+            while (k<1 || k > answerOptions[i].length){
+                System.out.println("Нет таких чисел");
+                System.out.print("Ваш ответ повторно: ");
+                k = answer.nextInt();
+            }
             //TODO: Проверяем ответ и выводим результат, а также увеличиваем счетчики правильных и неправильных ответов
             if (k==correctAnswers[i]){
                 correctCount++;
