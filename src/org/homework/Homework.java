@@ -36,12 +36,16 @@ public class Homework {
             }
             //TODO: Считываем с консоли ответ пользователя
             System.out.print("Ваш ответ: ");
+            int k = 1;
             Scanner answer = new Scanner(System.in);
-            int k = answer.nextInt();
-            while (k<1 || k > answerOptions[i].length){
-                System.out.println("Нет таких чисел");
-                System.out.print("Ваш ответ повторно: ");
-                k = answer.nextInt();
+            while (!answer.hasNextInt()){
+                System.out.println("Это не число. Введите число!");
+                var m = answer.next();
+                while (k<1 || k > answerOptions[i].length){
+                    System.out.println("Нет таких чисел");
+                    System.out.print("Ваш ответ повторно: ");
+                    k = answer.nextInt();
+                }
             }
             //TODO: Проверяем ответ и выводим результат, а также увеличиваем счетчики правильных и неправильных ответов
             if (k==correctAnswers[i]){
