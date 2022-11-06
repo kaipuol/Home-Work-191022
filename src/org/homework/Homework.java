@@ -26,7 +26,7 @@ public class Homework {
         answerOptions[3] = new String[]{"1) .class", "2) .java", "3) .exe", "4) .com", "5) .cmd", "6) .bat"};
         // TODO: Массив правильных ответов
         int[] correctAnswers = {2, 3, 1, 1};
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
         // TODO: Вывод вопроса на экран
         for(int i = 0; i < questions.length; i++) {
             System.out.println(questions[i]);
@@ -34,11 +34,25 @@ public class Homework {
             for(int j = 0; j < answerOptions[i].length; j++) {
                 System.out.println(answerOptions[i][j]);
             }
-            System.out.print("Ваш ответ: ");
             //TODO: Считываем с консоли ответ пользователя
+            System.out.print("Ваш ответ: ");
+            int k = 0;
             Scanner answer = new Scanner(System.in);
-            int k = answer.nextInt();
-            //TODO: Проверяем ответ и выводим результат, а также увеличиваем счетчики правильных и неправильных ответов
+            while (answer.hasNext()){
+                if (answer.hasNextInt()){
+                    k = answer.nextInt();
+                    if (k < 1 || k > answerOptions[i].length){
+                        System.out.println("Нет таких чисел");
+                        System.out.print("Ваш ответ повторно: ");
+                    } else {
+                        break;
+                    }
+                } else{
+                    System.out.println("Это не число. Введите число!");
+                    answer.next();
+                }
+            }
+           //TODO: Проверяем ответ и выводим результат, а также увеличиваем счетчики правильных и неправильных ответов
             if (k==correctAnswers[i]){
                 correctCount++;
             }
