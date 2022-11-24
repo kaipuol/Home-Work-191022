@@ -1,67 +1,26 @@
 package org.homework;
 
-import java.util.Scanner;
 public class Homework {
     public static void main(String[] args) {
-        int correctCount = 0, wrongCount = 0;
-        // TODO: Массив вопросов (вместо null надо написать определение массива)
-        String[] questions = new String[4];
-        questions[0] = "Что означает декларируемый Java принцип \"Write once, run anywhere\" ?";
-        questions[1] = "Как называется двоичный формат, который понимает виртуальная машина Java?";
-        questions[2] = "Что произойдет, если объявить метод main с синтаксически корректной, но не поддерживаемой\n" +
-                       "JVM комбинацией модификаторов, возвращаемого значения и параметров?";
-        questions[3] = "В какой файл компилируется файл с исходным кодом класса в Java?";
-        // TODO: Массив вариантов ответов
-        String[][] answerOptions = new String[4][];
-        answerOptions[0] = new String[]{"1) Java-программа может быть запущена из исходников на любой платформе, где есть интерпретатор Java",
-                "2) Скомпилированная Java-программа может быть запущена на любой платформе, где есть JVM",
-                "3) Java-программа может быть скомпилирована в исполняемый файл под любую платформу"};
-        answerOptions[1] = new String[]{"1) Virtual code (виртуальный код)",
-                "2) Intermediate language (промежуточный язык)",
-                "3) Bytecode (байткод)",
-                "4) Abstract syntax tree (абстрактное синтаксическое дерево)"};
-        answerOptions[2] = new String[]{"1) Программа скомпилируется, но при попытке запуска упадет с ошибкой",
-                "2) Программа скомпилируется, запустится, но ничего не сделает",
-                "3) Программа не скомпилируется"};
-        answerOptions[3] = new String[]{"1) .class", "2) .java", "3) .exe", "4) .com", "5) .cmd", "6) .bat"};
-        // TODO: Массив правильных ответов
-        int[] correctAnswers = {2, 3, 1, 1};
-        //Scanner scanner = new Scanner(System.in);
-        // TODO: Вывод вопроса на экран
-        for(int i = 0; i < questions.length; i++) {
-            System.out.println(questions[i]);
-            // TODO: Вывод вариантов ответов на экран
-            for(int j = 0; j < answerOptions[i].length; j++) {
-                System.out.println(answerOptions[i][j]);
-            }
-            //TODO: Считываем с консоли ответ пользователя
-            System.out.print("Ваш ответ: ");
-            int k = 0;
-            Scanner answer = new Scanner(System.in);
-            while (answer.hasNext()){
-                if (answer.hasNextInt()){
-                    k = answer.nextInt();
-                    if (k < 1 || k > answerOptions[i].length){
-                        System.out.println("Нет таких чисел");
-                        System.out.print("Ваш ответ повторно: ");
-                    } else {
-                        break;
-                    }
-                } else{
-                    System.out.println("Это не число. Введите число!");
-                    answer.next();
-                }
-            }
-           //TODO: Проверяем ответ и выводим результат, а также увеличиваем счетчики правильных и неправильных ответов
-            if (k==correctAnswers[i]){
-                correctCount++;
-            }
-            else {
-                wrongCount++;
-            }
-        }
-            System.out.println();
-        //Выводим общий результат
-        System.out.println("Результат: правильно " + correctCount + ", неправильно " + wrongCount);
+        Block test1 = new Block("Что означает декларируемый Java принцип \"Write once, run anywhere\" ?",
+                                new String[]{"1) Java-программа может быть запущена из исходников на любой платформе, где есть интерпретатор Java",
+                                "\n 2) Скомпилированная Java-программа может быть запущена на любой платформе, где есть JVM",
+                                "\n 3) Java-программа может быть скомпилирована в исполняемый файл под любую платформу"}, 2);
+
+        Block test2 = new Block("Как называется двоичный формат, который понимает виртуальная машина Java?",
+                                new String[]{"1) Virtual code (виртуальный код)", "\n 2) Intermediate language (промежуточный язык)",
+                                "\n 3) Bytecode (байткод)", "4) Abstract syntax tree (абстрактное синтаксическое дерево)"}, 3);
+
+        Block test3 = new Block("Что произойдет, если объявить метод main с синтаксически корректной, но не поддерживаемой" +
+                                "JVM комбинацией модификаторов, возвращаемого значения и параметров?",
+                                new String[]{"1) Программа скомпилируется, но при попытке запуска упадет с ошибкой",
+                                "\n 2) Программа скомпилируется, запустится, но ничего не сделает",
+                                "\n 3) Программа не скомпилируется"}, 1 );
+
+        Block test4 = new Block("В какой файл компилируется файл с исходным кодом класса в Java?",
+                                new String[] {"1) .class", "2) .java", "3) .exe", "4) .com", "5) .cmd", "6) .bat"}, 1 );
+        Block[] questions = {test1, test2, test3, test4};
+        Test test = new Test(questions);
+        test.run();
     }
 }
